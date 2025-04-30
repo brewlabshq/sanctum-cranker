@@ -1,0 +1,55 @@
+[package]
+name = "sanctum-clanker-update-api"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bincode = "^1"
+borsh = "^0.10"
+clap = { version = "^4", features = ["derive"] }
+itertools = "^0.10"
+rand = ">=0.7"
+sanctum-macros = "^1"
+serde = { version = "^1", features = ["derive"] }
+solana-readonly-account = { version = "^1", features = ["solana-sdk"] }
+spl-token-2022 = "^1"
+tokio = { version = "^1", features = ["rt-multi-thread"] }
+toml = "^0.8" # borsh-derive 0.9 -> proc-macro-crate 0.1.5 -> toml ^0.5, but 0.5 has the ValueAfterTable bug so we're getting 2 toml vers
+
+# sanctum-solana-utils
+spl_associated_token_account_interface = { git = "https://github.com/igneous-labs/sanctum-solana-utils", rev = "5e63810" }
+spl_stake_pool_interface = { features = ["serde"], git = "https://github.com/igneous-labs/sanctum-solana-utils", rev = "5e63810" }
+spl_token_interface = { git = "https://github.com/igneous-labs/sanctum-solana-utils", rev = "5e63810" }
+sanctum-associated-token-lib = { git = "https://github.com/igneous-labs/sanctum-solana-utils", rev = "5e63810" }
+sanctum-solana-cli-utils = { features = ["clap"], git = "https://github.com/igneous-labs/sanctum-solana-utils", rev = "5e63810" }
+sanctum-solana-client-utils = { git = "https://github.com/igneous-labs/sanctum-solana-utils", rev = "5e63810" }
+sanctum-spl-stake-pool-lib = { git = "https://github.com/igneous-labs/sanctum-solana-utils", rev = "5e63810" }
+
+# solana
+# keeping to 1.17.6 for now because later versions have some shit with the LoadedPrograms cache not loading
+# programs that were added from account files properly
+solana-account-decoder = "~1.17" # need to explicitly specify or cargo pulls 1.5 for some goddamn reason
+solana-client = "~1.17" # need to explicitly specify or cargo pulls 1.5 for some goddamn reason
+solana-program = "=1.17.6"
+solana-remote-wallet = { version = "~1.17", features = ["hidapi"] } # for ledger support
+solana-sdk = "~1.17"
+solana-transaction-status = "~1.17" # need to explicitly specify or cargo pulls 1.5 for some goddamn reason
+dotenv = "0.15.0"
+thiserror = "2.0.12"
+actix-web = "4.10.2"
+
+[dev-dependencies]
+assert_cmd = "^2"
+data-encoding = "^2"
+solana-program-test = "~1.17"
+tempfile = "^3"
+
+[dev-dependencies.sanctum-solana-test-utils]
+git = "https://github.com/igneous-labs/sanctum-solana-utils"
+rev = "5e63810"
+features = [
+    "banks-rpc-server",
+    "cli",
+    "stake",
+    "token"
+]
