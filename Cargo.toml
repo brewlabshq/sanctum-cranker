@@ -37,6 +37,7 @@ solana-transaction-status = "~1.17" # need to explicitly specify or cargo pulls 
 dotenv = "0.15.0"
 thiserror = "2.0.12"
 actix-web = "4.10.2"
+actix-cors = "0.7.1"
 
 [dev-dependencies]
 assert_cmd = "^2"
