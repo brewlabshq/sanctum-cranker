@@ -1,0 +1,9 @@
+[phases.setup]
+nixPkgs = [
+  "pkg-config",
+  "libudev",
+  "libusb1",
+  "clang",
+  "openssl.dev",
+  "zlib.dev"
+]
