@@ -1,7 +1,7 @@
 [phases.setup]
 nixPkgs = [
   "pkg-config",
-  "libudev",
+  "systemd",         # Provides libudev
   "libusb1",
   "clang",
   "openssl.dev",
