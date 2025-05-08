@@ -25,10 +25,9 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Copy the binary from the builder stage
-COPY --from=builder /app/target/release/sanctum-clanker-update .
 
 # Expose the port your app listens on
 EXPOSE 8080
 
 # Run the binary
-CMD ["./sanctum-clanker-update"]
+CMD ["./app/target/release/sanctum-clanker-update"]
