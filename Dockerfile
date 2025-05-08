@@ -10,17 +10,24 @@ WORKDIR /app
 
 COPY . .
 
+# Build the application
 RUN cargo build --release
 
-# Stage 2: Runtime image
-FROM debian:bookworm-slim
+# Stage 2: Create the runtime image
+FROM debian:bullseye-slim
 
+# Install runtime dependencies
 RUN apt-get update && \
-    apt-get install -y libudev1 ca-certificates && \
+    apt-get install -y ca-certificates libssl-dev libudev-dev && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY --from=builder /app/target/release/sanctum-clanker-update-api .
+# Copy the binary from the builder stage
+# COPY /app/target/release/sanctum-clanker-update .
 
-CMD ["./sanctum-clanker-update-api"]
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Run the binary
+CMD ["./app/target/release/sanctum-clanker-update"]
