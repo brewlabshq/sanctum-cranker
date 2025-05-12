@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 use borsh::BorshDeserialize;
 use sanctum_solana_cli_utils::TxSendMode;
 use sanctum_spl_stake_pool_lib::account_resolvers::{
