@@ -13,6 +13,11 @@ async fn hello_clanker() -> HttpResponse {
     HttpResponse::Ok().body("Clanker service is running")
 }
 
+#[get("/health")]
+async fn health_check() -> HttpResponse {
+    HttpResponse::Ok().body("Clanker service is healthy")
+}
+
 #[post("/clanker/update")]
 async fn update_pool(body: web::Json<UpdatePoolRequest>) -> HttpResponse {
     match services::clanker_service::update(&body.pool).await {
