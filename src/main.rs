@@ -3,7 +3,7 @@ use actix_web::{App, HttpServer};
 
 use config::ClankerConfig;
 use dotenv::dotenv;
-use routes::clanker_route::update_pool;
+use routes::clanker_route::{hello_clanker, update_pool};
 
 pub mod config;
 pub mod routes;
@@ -17,6 +17,8 @@ async fn main() -> std::io::Result<()> {
 
     let config = ClankerConfig::get_config();
 
+    println!("Clanker started on port: {}", config.port);
+
     return HttpServer::new(|| {
         App::new()
             .wrap(
@@ -26,8 +28,9 @@ async fn main() -> std::io::Result<()> {
                     .allowed_headers(vec!["Content-Type"]),
             )
             .service(update_pool)
+            .service(hello_clanker)
     })
-    .bind(("localhost", config.port))?
+    .bind(("0.0.0.0", config.port))?
     .run()
     .await;
 }
