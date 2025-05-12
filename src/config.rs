@@ -20,7 +20,7 @@ impl ClankerConfig {
     pub fn get_config() -> Self {
         let port = match env::var("PORT") {
             Ok(port) => port.parse::<u16>().unwrap(),
-            Err(_) => 8080,
+            Err(_) => 5555,
         };
 
         let rpc_url =
