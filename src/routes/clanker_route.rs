@@ -1,4 +1,4 @@
-use actix_web::{post, web, HttpResponse};
+use actix_web::{get, post, web, HttpResponse};
 use serde::Deserialize;
 
 use crate::services;
@@ -6,6 +6,11 @@ use crate::services;
 #[derive(Deserialize)]
 struct UpdatePoolRequest {
     pool: String,
+}
+
+#[get("/")]
+async fn hello_clanker() -> HttpResponse {
+    HttpResponse::Ok().body("Clanker service is running")
 }
 
 #[post("/clanker/update")]
