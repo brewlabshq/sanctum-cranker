@@ -1,4 +1,10 @@
+<div align="center">
+    
 # Sanctum Cranker
+
+</div>
+
+![cranker](https://github.com/user-attachments/assets/62d33261-1ea9-4db3-9113-e83c11d6b905)
 
 A Rust-based automation tool for cranking [Sanctum Reserve](https://www.sanctum.so/) pools on the Solana blockchain using a CLI interface. It is designed to simplify and automate the process of sending cranking transactions using Solana RPC and a designated wallet.
 
@@ -93,6 +99,7 @@ docker run -e PORT=3000 \
 ## 🧭 Roadmap
 
 - [x] RESTful API server interface
+- [ ] Migrate sol transfer function
 - [ ] Retry logic and error reporting
 - [ ] Unit and integration tests
 
