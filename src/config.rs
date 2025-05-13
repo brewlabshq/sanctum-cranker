@@ -2,7 +2,7 @@ use std::env;
 use thiserror::Error;
 
 #[derive(Default, Debug)]
-pub struct ClankerConfig {
+pub struct CrankerConfig {
     pub port: u16,
     pub rpc_url: String,
     pub payer_private_key: String,
@@ -16,7 +16,7 @@ enum ConfigError {
     InvalidPayerPrivateKey,
 }
 
-impl ClankerConfig {
+impl CrankerConfig {
     pub fn get_config() -> Self {
         let port = match env::var("PORT") {
             Ok(port) => port.parse::<u16>().unwrap(),
