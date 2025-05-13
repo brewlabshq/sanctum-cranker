@@ -9,18 +9,18 @@ struct UpdatePoolRequest {
 }
 
 #[get("/")]
-async fn hello_clanker() -> HttpResponse {
-    HttpResponse::Ok().body("Clanker service is running")
+async fn hello_cranker() -> HttpResponse {
+    HttpResponse::Ok().body("Cranker service is running")
 }
 
 #[get("/health")]
 async fn health_check() -> HttpResponse {
-    HttpResponse::Ok().body("Clanker service is healthy")
+    HttpResponse::Ok().body("Cranker service is healthy")
 }
 
-#[post("/clanker/update")]
+#[post("/cranker/update")]
 async fn update_pool(body: web::Json<UpdatePoolRequest>) -> HttpResponse {
-    match services::clanker_service::update(&body.pool).await {
+    match services::cranker_service::update(&body.pool).await {
         Ok(_) => HttpResponse::Ok().body("Success"),
         Err(e) => {
             print!("Failed to update pool: {:?}", e);

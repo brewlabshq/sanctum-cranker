@@ -2,7 +2,7 @@ use std::str::FromStr;
 
 use borsh::BorshDeserialize;
 
-use crate::config::ClankerConfig;
+use crate::config::CrankerConfig;
 use crate::update::{update_pool, UpdatePoolArgs};
 use sanctum_solana_cli_utils::TxSendMode;
 use solana_client::nonblocking::rpc_client::RpcClient;
@@ -13,7 +13,7 @@ use solana_sdk::{
 use spl_stake_pool_interface::{StakePool, ValidatorList};
 
 pub async fn update(pool: &str) -> Result<(), Box<dyn std::error::Error>> {
-    let config = ClankerConfig::get_config();
+    let config = CrankerConfig::get_config();
 
     let rpc = RpcClient::new_with_commitment(config.rpc_url, CommitmentConfig::confirmed());
     let pool = Pubkey::from_str(pool).unwrap();

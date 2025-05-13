@@ -1,9 +1,9 @@
 use actix_cors::Cors;
 use actix_web::{App, HttpServer};
 
-use config::ClankerConfig;
+use config::CrankerConfig;
 use dotenv::dotenv;
-use routes::clanker_route::{health_check, hello_clanker, update_pool};
+use routes::cranker_route::{health_check, hello_cranker, update_pool};
 
 pub mod config;
 pub mod routes;
@@ -15,9 +15,9 @@ pub mod update;
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
 
-    let config = ClankerConfig::get_config();
+    let config = CrankerConfig::get_config();
 
-    println!("Clanker started on port: {}", config.port);
+    println!("Cranker started on port: {}", config.port);
 
     return HttpServer::new(|| {
         App::new()
@@ -28,7 +28,7 @@ async fn main() -> std::io::Result<()> {
                     .allowed_headers(vec!["Content-Type"]),
             )
             .service(update_pool)
-            .service(hello_clanker)
+            .service(hello_hello_cranker)
             .service(health_check)
     })
     .bind(("0.0.0.0", config.port))?
