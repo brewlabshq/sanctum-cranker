@@ -8,7 +8,7 @@ A Rust-based automation tool for cranking [Sanctum Reserve](https://www.sanctum.
 
 - Rust (latest stable version)
 - Solana CLI (for local key management, optional)
-- Docker (optional, for containerized usage)
+- Docker (required, for containerized usage and production deployment)
 
 ---
 
