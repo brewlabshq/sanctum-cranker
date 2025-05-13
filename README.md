@@ -119,7 +119,3 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
 ## 👨‍💻 Author
 
 Built and maintained by the Brew Labs team.
-
-```
-
-```
