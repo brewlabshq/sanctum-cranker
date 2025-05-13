@@ -28,7 +28,7 @@ async fn main() -> std::io::Result<()> {
                     .allowed_headers(vec!["Content-Type"]),
             )
             .service(update_pool)
-            .service(hello_hello_cranker)
+            .service(hello_cranker)
             .service(health_check)
     })
     .bind(("0.0.0.0", config.port))?
